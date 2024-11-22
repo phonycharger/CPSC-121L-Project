@@ -3,8 +3,13 @@ private:
     vector<LeftoverRecord> leftoverRecords;
 
 public:
+    // Default Constructor
+    LeftoverReport() {}
+
+    // Parameterized Constructor
     LeftoverReport(const vector<LeftoverRecord>& records) : leftoverRecords(records) {}
 
+    // Member Functions (no changes required here for this fix)
     double getTotalFoodWasteCost() const {
         double totalCost = 0.0;
         for (const auto& record : leftoverRecords) {
@@ -52,6 +57,11 @@ public:
                            [](const auto& a, const auto& b) { return a.second < b.second; })
             ->first;
     }
+
+    string getLeftoverReductionStrategy() const {
+        return "Implement portion control and repurpose leftovers into new meals.";
+    }
+};
 
     string getLeftoverReductionStrategy() const {
         return "Implement portion control and repurpose leftovers into new meals.";
