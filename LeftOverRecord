@@ -1,0 +1,30 @@
+class LeftoverRecord {
+private:
+    string date;
+    string meal;
+    string foodName;
+    int quantity;
+    string leftoverReason;
+    string disposalMechanism;
+    double cost;
+
+public:
+    LeftoverRecord(string d, string m, string f, int q, string lr, string dm, double c)
+        : date(d), meal(m), foodName(f), quantity(q), leftoverReason(lr), disposalMechanism(dm), cost(c) {}
+
+    string getDate() const { return date; }
+    string getMeal() const { return meal; }
+    string getFoodName() const { return foodName; }
+    int getQuantity() const { return quantity; }
+    string getLeftoverReason() const { return leftoverReason; }
+    string getDisposalMechanism() const { return disposalMechanism; }
+    double getCost() const { return cost; }
+
+    void setDate(const string& d) { date = d; }
+    void setMeal(const string& m) { meal = m; }
+    void setFoodName(const string& f) { foodName = f; }
+    void setQuantity(int q) { quantity = q; }
+    void setLeftoverReason(const string& lr) { leftoverReason = lr; }
+    void setDisposalMechanism(const string& dm) { disposalMechanism = dm; }
+    void setCost(double c) { cost = c; }
+};
