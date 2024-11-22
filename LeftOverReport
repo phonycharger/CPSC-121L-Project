@@ -1,0 +1,59 @@
+class LeftoverReport {
+private:
+    vector<LeftoverRecord> leftoverRecords;
+
+public:
+    LeftoverReport(const vector<LeftoverRecord>& records) : leftoverRecords(records) {}
+
+    double getTotalFoodWasteCost() const {
+        double totalCost = 0.0;
+        for (const auto& record : leftoverRecords) {
+            totalCost += record.getCost();
+        }
+        return totalCost;
+    }
+
+    string getMostCommonWastedFood() const {
+        map<string, int> foodCount;
+        for (const auto& record : leftoverRecords) {
+            foodCount[record.getFoodName()] += record.getQuantity();
+        }
+        return max_element(foodCount.begin(), foodCount.end(),
+                           [](const auto& a, const auto& b) { return a.second < b.second; })
+            ->first;
+    }
+
+    string getWasteProducingMeal() const {
+        map<string, int> mealCount;
+        for (const auto& record : leftoverRecords) {
+            mealCount[record.getMeal()] += record.getQuantity();
+        }
+        return max_element(mealCount.begin(), mealCount.end(),
+                           [](const auto& a, const auto& b) { return a.second < b.second; })
+            ->first;
+    }
+
+    string getMostCommonLeftoverReason() const {
+        map<string, int> reasonCount;
+        for (const auto& record : leftoverRecords) {
+            reasonCount[record.getLeftoverReason()]++;
+        }
+        return max_element(reasonCount.begin(), reasonCount.end(),
+                           [](const auto& a, const auto& b) { return a.second < b.second; })
+            ->first;
+    }
+
+    string getMostCommonDisposalMechanism() const {
+        map<string, int> disposalCount;
+        for (const auto& record : leftoverRecords) {
+            disposalCount[record.getDisposalMechanism()]++;
+        }
+        return max_element(disposalCount.begin(), disposalCount.end(),
+                           [](const auto& a, const auto& b) { return a.second < b.second; })
+            ->first;
+    }
+
+    string getLeftoverReductionStrategy() const {
+        return "Implement portion control and repurpose leftovers into new meals.";
+    }
+};
