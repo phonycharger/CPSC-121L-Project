@@ -1,8 +1,17 @@
+#ifndef LEFTOVER_TRACKER_H
+#define LEFTOVER_TRACKER_H
+
+#include <vector>
+#include "LeftoverRecord.h"
+#include "LeftoverReport.h"
+using namespace std;
+
 class LeftoverTracker {
 private:
     vector<LeftoverRecord> leftoverRecords;
 
 public:
+    // Methods
     void addRecord(const LeftoverRecord& record) {
         leftoverRecords.push_back(record);
     }
@@ -16,24 +25,5 @@ public:
     }
 };
 
-int main() {
-    // Create Leftover Records
-    LeftoverRecord record1("2024-11-20", "Lunch", "Pizza", 2, "Overordering", "Compost", 15.5);
-    LeftoverRecord record2("2024-11-21", "Dinner", "Salad", 1, "Didn't finish", "Trash", 7.3);
-    LeftoverRecord record3("2024-11-21", "Lunch", "Sandwich", 3, "Overordering", "Compost", 12.0);
+#endif // LEFTOVER_TRACKER_H
 
-    LeftoverTracker tracker;
-    tracker.addRecord(record1);
-    tracker.addRecord(record2);
-    tracker.addRecord(record3);
-
-    LeftoverReport report = tracker.getLeftoverReport();
-    cout << "Total Food Waste Cost: $" << report.getTotalFoodWasteCost() << endl;
-    cout << "Most Common Wasted Food: " << report.getMostCommonWastedFood() << endl;
-    cout << "Waste Producing Meal: " << report.getWasteProducingMeal() << endl;
-    cout << "Most Common Leftover Reason: " << report.getMostCommonLeftoverReason() << endl;
-    cout << "Most Common Disposal Mechanism: " << report.getMostCommonDisposalMechanism() << endl;
-    cout << "Leftover Reduction Strategy: " << report.getLeftoverReductionStrategy() << endl;
-
-    return 0;
-}
